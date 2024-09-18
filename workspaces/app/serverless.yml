@@ -1,0 +1,40 @@
+service: deno-test
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+frameworkVersion: "^3"
+useDotenv: true
+
+provider:
+  apiGateway:
+    shouldStartNameWithService: true
+  architecture: arm64
+  deploymentMethod: direct
+  httpApi:
+    cors: true
+  name: aws
+  stackName: ${self:service}-${sls:stage}
+  timeout: 30
+  logRetentionInDays: 90
+  versionFunctions: false
+
+functions:
+  greet:
+    ecrImage:
+      path: functions/greeter
+      platform: linux/arm64
+      provenance: false
+
+package:
+  individually: true
+
+plugins:
+  - serverless-function-image-plugin
+
+custom:
+  enterprise:
+    collectLambdaLogs: false
+    disableAwsSpans: true
+    disableHttpSpans: true
+  safeguards:
+    isDisabled: true

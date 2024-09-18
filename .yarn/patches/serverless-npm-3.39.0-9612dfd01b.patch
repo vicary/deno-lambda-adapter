@@ -1,0 +1,44 @@
+diff --git a/lib/plugins/aws/provider.js b/lib/plugins/aws/provider.js
+index 8f2a9900a57950758f17c55fbb4758ecec8891d2..b919bbaaa7784242585e0eed072915b4ae130b4b 100644
+--- a/lib/plugins/aws/provider.js
++++ b/lib/plugins/aws/provider.js
+@@ -1126,6 +1126,7 @@ class AwsProvider {
+                             buildArgs: { type: 'object', additionalProperties: { type: 'string' } },
+                             cacheFrom: { type: 'array', items: { type: 'string' } },
+                             platform: { type: 'string' },
++                            provenance: { type: 'boolean' },
+                           },
+                           additionalProperties: false,
+                         },
+@@ -2206,6 +2207,7 @@ Object.defineProperties(
+         buildArgs,
+         cacheFrom,
+         platform,
++        provenance,
+         scanOnPush,
+       }) {
+         const imageProgress = progress.get(`containerImage:${imageName}`);
+@@ -2254,6 +2256,7 @@ Object.defineProperties(
+
+         // This is an optional argument, so we only append to the arguments if "platform" is specified.
+         if (platform !== '') buildDockerArgs.push(`--platform=${platform}`);
++        if (provenance !== undefined) buildDockerArgs.push(`--provenance=${Boolean(provenance)}`);
+
+         let imageSha;
+         try {
+@@ -2450,6 +2453,7 @@ Object.defineProperties(
+               buildArgs: imageDefinedInProvider.buildArgs || defaultBuildArgs,
+               cacheFrom: imageDefinedInProvider.cacheFrom || defaultCacheFrom,
+               platform: imageDefinedInProvider.platform || defaultPlatform,
++              provenance: imageDefinedInProvider.provenance,
+               scanOnPush: imageScanDefinedInProvider,
+             });
+           }
+@@ -2465,6 +2469,7 @@ Object.defineProperties(
+           buildArgs: imageDefinedInProvider.buildArgs || defaultBuildArgs,
+           cacheFrom: imageDefinedInProvider.cacheFrom || defaultCacheFrom,
+           platform: imageDefinedInProvider.platform || defaultPlatform,
++          provenance: imageDefinedInProvider.provenance,
+           scanOnPush: imageScanDefinedInProvider,
+         });
+       },

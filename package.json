@@ -1,0 +1,17 @@
+{
+  "name": "sls-deno-test",
+  "version": "0.0.0-development",
+  "private": true,
+  "license": "MIT",
+  "author": "Vicary Archangel <vicary.archangel@member.mensa.org>",
+  "workspaces": [
+    "workspaces/*"
+  ],
+  "scripts": {
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "husky": "^9.1.6"
+  },
+  "packageManager": "yarn@4.5.0"
+}

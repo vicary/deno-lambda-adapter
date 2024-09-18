@@ -1,0 +1,8 @@
+{
+  "name": "app",
+  "private": true,
+  "devDependencies": {
+    "serverless": "patch:serverless@npm%3A3.39.0#~/.yarn/patches/serverless-npm-3.39.0-9612dfd01b.patch",
+    "serverless-function-image-plugin": "workspace:^"
+  }
+}
