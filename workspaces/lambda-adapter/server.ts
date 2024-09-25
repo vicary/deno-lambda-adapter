@@ -1,10 +1,4 @@
-type Promisable<T> = T | Promise<T>;
-
-type Env = Record<string, string | undefined>;
-
-type ReqeustHandler = (request: Request, env: Env) => Promisable<Response>;
-
-type Shutdown = () => Promisable<void>;
+import { env, type Env } from "./env.ts";
 
 declare const Bun:
   | {
@@ -27,6 +21,12 @@ declare const process:
     }
   | undefined;
 
+type Promisable<T> = T | Promise<T>;
+
+type ReqeustHandler = (request: Request, env: Env) => Promisable<Response>;
+
+type Shutdown = () => Promisable<void>;
+
 type CloudFlareFetchEvent = {
   /* [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/request) */
   readonly request: Request;
@@ -35,19 +35,19 @@ type CloudFlareFetchEvent = {
 };
 
 export const onStart = async (handler: ReqeustHandler): Promise<Shutdown> => {
+  const envObj = env();
+
   // Bun
   if (typeof Bun !== "undefined") {
     const server = Bun.serve({
-      fetch: (request) => handler(request, process!.env),
+      fetch: (request) => handler(request, envObj),
     });
 
     return () => server.stop();
   }
   // Deno
   else if (typeof Deno !== "undefined") {
-    const server = Deno.serve((request) =>
-      handler(request, Deno.env.toObject())
-    );
+    const server = Deno.serve((request) => handler(request, envObj));
 
     return () => server.shutdown();
   }
@@ -70,7 +70,7 @@ export const onStart = async (handler: ReqeustHandler): Promise<Shutdown> => {
             ),
             body: ReadableStream.from(request),
           }),
-          process.env
+          envObj
         );
 
         response.writeHead(result.status, Object.fromEntries(result.headers));
@@ -97,7 +97,7 @@ export const onStart = async (handler: ReqeustHandler): Promise<Shutdown> => {
     const eventListener = async (event: Event) => {
       const typedEvent = event as unknown as CloudFlareFetchEvent;
 
-      typedEvent.respondWith(await handler(typedEvent.request, process!.env));
+      typedEvent.respondWith(await handler(typedEvent.request, envObj));
     };
 
     addEventListener("fetch", eventListener);

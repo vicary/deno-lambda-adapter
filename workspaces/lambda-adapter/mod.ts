@@ -1,16 +1,25 @@
 import type { Context, Handler } from "npm:@types/aws-lambda@^8.10.145";
+import { env } from "./env.ts";
 import { onStart, onStop } from "./server.ts";
 
-let lambdaHandler: Handler | null = null;
+const handlers = new Map<string, Handler>();
 
 /**
  * Register the handler function to be called when the Lambda function is
  * invoked.
  */
-export const registerHandler = (handler: Handler): void => {
-  // [ ] Handle environment variable `_HANDLER`
-  lambdaHandler = handler;
-};
+export function registerHandler(handler: Handler): void;
+export function registerHandler(name: string, handler: Handler): void;
+export function registerHandler(
+  nameOrHandler: Handler | string,
+  maybeHandler?: Handler
+): void {
+  if (typeof nameOrHandler === "string") {
+    handlers.set(nameOrHandler, maybeHandler!);
+  } else {
+    handlers.set("deno", nameOrHandler);
+  }
+}
 
 type Ok<T> = [null, T];
 type Err<E> = [E, null];
@@ -42,8 +51,11 @@ const shutdown = await onStart(async (req) => {
   }
 
   const response = await new Promise((resolve, reject) => {
+    const handlerName = env("_HANDLER") || "deno";
+    const handler = handlers.get(handlerName);
+
     try {
-      const maybePromise = lambdaHandler?.(event, context, (error, result) =>
+      const maybePromise = handler?.(event, context, (error, result) =>
         error ? reject(error) : resolve(result)
       );
 

@@ -5,6 +5,8 @@
       "jsr:@std/crypto": "jsr:@std/crypto@1.0.3",
       "jsr:@std/encoding": "jsr:@std/encoding@1.0.5",
       "jsr:@vicary/lambda-adapter@^0.1.1": "jsr:@vicary/lambda-adapter@0.1.1",
+      "jsr:@vicary/lambda-adapter@^0.1.2": "jsr:@vicary/lambda-adapter@0.1.2",
+      "jsr:@vicary/lambda-adapter@^0.1.3": "jsr:@vicary/lambda-adapter@0.1.3",
       "npm:@types/aws-lambda": "npm:@types/aws-lambda@8.10.145",
       "npm:@types/aws-lambda@^8.10.145": "npm:@types/aws-lambda@8.10.145",
       "npm:@types/node": "npm:@types/node@18.16.19",
@@ -19,6 +21,18 @@
       },
       "@vicary/lambda-adapter@0.1.1": {
         "integrity": "7fec375d1e29672d9a4f4a18a43e46c5967c8e95b37362b36dd87d4419ac820d",
+        "dependencies": [
+          "npm:@types/aws-lambda@^8.10.145"
+        ]
+      },
+      "@vicary/lambda-adapter@0.1.2": {
+        "integrity": "9af3869fb063429a13dd430e30d447754bbb6fe51094a25c77dee60c14354fce",
+        "dependencies": [
+          "npm:@types/aws-lambda@^8.10.145"
+        ]
+      },
+      "@vicary/lambda-adapter@0.1.3": {
+        "integrity": "9fcdab851b5ebaebd078c6f10b7ff6efb189473b0fa187a74887084001e5dbbc",
         "dependencies": [
           "npm:@types/aws-lambda@^8.10.145"
         ]
