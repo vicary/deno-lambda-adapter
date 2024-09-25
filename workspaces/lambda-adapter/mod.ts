@@ -1,4 +1,5 @@
 import type { Context, Handler } from "npm:@types/aws-lambda@^8.10.145";
+import { onStart, onStop } from "./server.ts";
 
 let lambdaHandler: Handler | null = null;
 
@@ -17,7 +18,7 @@ function ensureResult<T, E = Error>([err, val]: Result<T, E>): T {
   return val!;
 }
 
-const server = Deno.serve(async (req) => {
+const shutdown = await onStart(async (req) => {
   if (req.method === "GET") {
     return new Response();
   }
@@ -55,11 +56,7 @@ const server = Deno.serve(async (req) => {
   return new Response(JSON.stringify(response));
 });
 
-Deno.addSignalListener("SIGTERM", async () => {
-  await server.shutdown();
-
-  Deno.exit();
-});
+onStop(shutdown);
 
 function parseLambdaContext(input: string | null): Result<Context> {
   input = input?.trim() || null;
