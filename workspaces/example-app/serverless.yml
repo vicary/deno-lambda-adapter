@@ -1,4 +1,4 @@
-service: deno-test
+service: deno-lambda-adapter-example
 
 frameworkVersion: "^3"
 

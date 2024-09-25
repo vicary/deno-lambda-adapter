@@ -3,8 +3,12 @@ import { onStart, onStop } from "./server.ts";
 
 let lambdaHandler: Handler | null = null;
 
-// [ ] Handle environment variable `_HANDLER`
+/**
+ * Register the handler function to be called when the Lambda function is
+ * invoked.
+ */
 export const registerHandler = (handler: Handler): void => {
+  // [ ] Handle environment variable `_HANDLER`
   lambdaHandler = handler;
 };
 

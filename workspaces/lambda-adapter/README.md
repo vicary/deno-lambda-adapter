@@ -35,6 +35,9 @@ COPY --from=aws-lambda-adapter /lambda-adapter /opt/extensions/lambda-adapter
 ENV PORT=8000
 EXPOSE 8000
 
+RUN mkdir /var/deno/
+ENV DENO_DIR=/var/deno/
+
 # Copy the function code
 WORKDIR "/var/task"
 COPY . /var/task

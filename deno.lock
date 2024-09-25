@@ -4,7 +4,10 @@
     "specifiers": {
       "jsr:@std/crypto": "jsr:@std/crypto@1.0.3",
       "jsr:@std/encoding": "jsr:@std/encoding@1.0.5",
+      "jsr:@vicary/lambda-adapter@^0.1.1": "jsr:@vicary/lambda-adapter@0.1.1",
       "npm:@types/aws-lambda": "npm:@types/aws-lambda@8.10.145",
+      "npm:@types/aws-lambda@^8.10.145": "npm:@types/aws-lambda@8.10.145",
+      "npm:@types/node": "npm:@types/node@18.16.19",
       "npm:aws-lambda": "npm:aws-lambda@1.0.7"
     },
     "jsr": {
@@ -13,11 +16,21 @@
       },
       "@std/encoding@1.0.5": {
         "integrity": "ecf363d4fc25bd85bd915ff6733a7e79b67e0e7806334af15f4645c569fefc04"
+      },
+      "@vicary/lambda-adapter@0.1.1": {
+        "integrity": "7fec375d1e29672d9a4f4a18a43e46c5967c8e95b37362b36dd87d4419ac820d",
+        "dependencies": [
+          "npm:@types/aws-lambda@^8.10.145"
+        ]
       }
     },
     "npm": {
       "@types/aws-lambda@8.10.145": {
         "integrity": "sha512-dtByW6WiFk5W5Jfgz1VM+YPA21xMXTuSFoLYIDY0L44jDLLflVPtZkYuu3/YxpGcvjzKFBZLU+GyKjR0HOYtyw==",
+        "dependencies": {}
+      },
+      "@types/node@18.16.19": {
+        "integrity": "sha512-IXl7o+R9iti9eBW4Wg2hx1xQDig183jj7YLn8F7udNceyfkbn1ZxmzZXuak20gR40D7pIkIY1kYGx5VIGbaHKA==",
         "dependencies": {}
       },
       "argparse@1.0.10": {

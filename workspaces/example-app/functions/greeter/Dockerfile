@@ -14,6 +14,9 @@ COPY --from=aws-lambda-adapter /lambda-adapter /opt/extensions/lambda-adapter
 ENV PORT=8000
 EXPOSE 8000
 
+RUN mkdir /var/deno/
+ENV DENO_DIR=/var/deno/
+
 # Copy the function code
 WORKDIR "/var/task"
 COPY . /var/task
@@ -26,6 +29,3 @@ RUN deno cache handler.ts
 # RUN timeout 10s deno run -A handler.ts || [ $? -eq 143 ] || exit 1
 
 CMD ["deno", "run", "-A", "handler.ts"]
-
-# docker build -t 571664442729.dkr.ecr.ap-northeast-1.amazonaws.com/deno-test .
-# docker push 571664442729.dkr.ecr.ap-northeast-1.amazonaws.com/deno-test
