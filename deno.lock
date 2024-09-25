@@ -7,6 +7,7 @@
       "jsr:@vicary/lambda-adapter@^0.1.1": "jsr:@vicary/lambda-adapter@0.1.1",
       "jsr:@vicary/lambda-adapter@^0.1.2": "jsr:@vicary/lambda-adapter@0.1.2",
       "jsr:@vicary/lambda-adapter@^0.1.3": "jsr:@vicary/lambda-adapter@0.1.3",
+      "jsr:@vicary/lambda-adapter@^0.1.4": "jsr:@vicary/lambda-adapter@0.1.4",
       "npm:@types/aws-lambda": "npm:@types/aws-lambda@8.10.145",
       "npm:@types/aws-lambda@^8.10.145": "npm:@types/aws-lambda@8.10.145",
       "npm:@types/node": "npm:@types/node@18.16.19",
@@ -33,6 +34,12 @@
       },
       "@vicary/lambda-adapter@0.1.3": {
         "integrity": "9fcdab851b5ebaebd078c6f10b7ff6efb189473b0fa187a74887084001e5dbbc",
+        "dependencies": [
+          "npm:@types/aws-lambda@^8.10.145"
+        ]
+      },
+      "@vicary/lambda-adapter@0.1.4": {
+        "integrity": "a8860cdb0ddb88ffd8c5eaee3db245893a44fe04f7bcd7871b7748f421225413",
         "dependencies": [
           "npm:@types/aws-lambda@^8.10.145"
         ]

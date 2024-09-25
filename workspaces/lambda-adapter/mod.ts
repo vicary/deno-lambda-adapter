@@ -5,11 +5,18 @@ import { onStart, onStop } from "./server.ts";
 const handlers = new Map<string, Handler>();
 
 /**
- * Register the handler function to be called when the Lambda function is
- * invoked.
+ * Register a default handler to be called when the Lambda function is invoked
+ * without _HANDLER specified.
  */
 export function registerHandler(handler: Handler): void;
+/**
+ * Register handler function under specified name to be called when the Lambda
+ * is deployed with _HANDLER set.
+ */
 export function registerHandler(name: string, handler: Handler): void;
+/**
+ * Register handler function under specified name to be called when the Lambda
+ */
 export function registerHandler(
   nameOrHandler: Handler | string,
   maybeHandler?: Handler
