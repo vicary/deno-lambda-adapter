@@ -22,10 +22,10 @@ COPY . /var/task
 RUN apk add --no-cache deno
 
 # Warmup caches
-RUN deno cache lambda.ts
-# RUN timeout 10s deno run -A lambda.ts || [ $? -eq 143 ] || exit 1
+RUN deno cache handler.ts
+# RUN timeout 10s deno run -A handler.ts || [ $? -eq 143 ] || exit 1
 
-CMD ["deno", "run", "-A", "lambda.ts"]
+CMD ["deno", "run", "-A", "handler.ts"]
 
 # docker build -t 571664442729.dkr.ecr.ap-northeast-1.amazonaws.com/deno-test .
 # docker push 571664442729.dkr.ecr.ap-northeast-1.amazonaws.com/deno-test

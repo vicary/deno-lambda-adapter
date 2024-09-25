@@ -2010,15 +2010,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"app@workspace:workspaces/app":
-  version: 0.0.0-use.local
-  resolution: "app@workspace:workspaces/app"
-  dependencies:
-    serverless: "patch:serverless@npm%3A3.39.0#~/.yarn/patches/serverless-npm-3.39.0-9612dfd01b.patch"
-    serverless-function-image-plugin: "workspace:^"
-  languageName: unknown
-  linkType: soft
-
 "archive-type@npm:^4.0.0":
   version: 4.0.0
   resolution: "archive-type@npm:4.0.0"
@@ -3252,6 +3243,15 @@ __metadata:
   checksum: 10c0/29ba5a4c7d03dd2f4a2d3d9d4dfd8332225256f666cd69f490975d2eff8d7c73f1fb4872877b2c1f3b485e8fb42462153d65e5a21ea994eb928c3bec9e0c826e
   languageName: node
   linkType: hard
+
+"example-app@workspace:workspaces/example-app":
+  version: 0.0.0-use.local
+  resolution: "example-app@workspace:workspaces/example-app"
+  dependencies:
+    serverless: "patch:serverless@npm%3A3.39.0#~/.yarn/patches/serverless-npm-3.39.0-9612dfd01b.patch"
+    serverless-function-image: "npm:^1.0.0"
+  languageName: unknown
+  linkType: soft
 
 "exponential-backoff@npm:^3.1.1":
   version: 3.1.1
@@ -5503,6 +5503,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"root-workspace-0b6124@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "root-workspace-0b6124@workspace:."
+  dependencies:
+    husky: "npm:^9.1.6"
+  languageName: unknown
+  linkType: soft
+
 "run-async@npm:^2.4.0":
   version: 2.4.1
   resolution: "run-async@npm:2.4.1"
@@ -5625,11 +5633,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"serverless-function-image-plugin@workspace:^, serverless-function-image-plugin@workspace:workspaces/serverless-function-image-plugin":
-  version: 0.0.0-use.local
-  resolution: "serverless-function-image-plugin@workspace:workspaces/serverless-function-image-plugin"
-  languageName: unknown
-  linkType: soft
+"serverless-function-image@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "serverless-function-image@npm:1.0.0"
+  checksum: 10c0/13444a09117fda17f779b8d1160b7f288a3353b63fabb1bb6cd3b443a4bcaa9c3d02a7ae4c64cb5dcf3f71af7eec02fde06b522e89fa34d83c800c0b0c41db0b
+  languageName: node
+  linkType: hard
 
 "serverless@npm:3.39.0":
   version: 3.39.0
@@ -5706,7 +5715,7 @@ __metadata:
 
 "serverless@patch:serverless@npm%3A3.39.0#~/.yarn/patches/serverless-npm-3.39.0-9612dfd01b.patch":
   version: 3.39.0
-  resolution: "serverless@patch:serverless@npm%3A3.39.0#~/.yarn/patches/serverless-npm-3.39.0-9612dfd01b.patch::version=3.39.0&hash=0f3dca"
+  resolution: "serverless@patch:serverless@npm%3A3.39.0#~/.yarn/patches/serverless-npm-3.39.0-9612dfd01b.patch::version=3.39.0&hash=d5418b"
   dependencies:
     "@aws-sdk/client-api-gateway": "npm:^3.588.0"
     "@aws-sdk/client-cognito-identity-provider": "npm:^3.588.0"
@@ -5773,7 +5782,7 @@ __metadata:
   bin:
     serverless: bin/serverless.js
     sls: bin/serverless.js
-  checksum: 10c0/bd68d64c4d4e5dfc712d288d7087abbc98d89bbde39414d277e30578da5cac213ef096e4e65bf19c076438e6c02433804518147bbb162614e268c76a786b3a72
+  checksum: 10c0/ae9b16bde9ea65276976f12aadda069cc2c1485bded32d9ffb3294ab50f4e08dd9f4cc1c02f71a5713be9e5b9e0c9cf892f6fe318d40843c29fe6da3f01dd37f
   languageName: node
   linkType: hard
 
@@ -5885,14 +5894,6 @@ __metadata:
   checksum: 10c0/e18488c6a42bdfd4ac5be85b2ced3ccd0224773baae6ad42cfbb9ec74fc07f9fa8396bd35ee638084ead7a2a0818eb5e7151111544d4731ce843019dab4be47b
   languageName: node
   linkType: hard
-
-"sls-deno-test@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "sls-deno-test@workspace:."
-  dependencies:
-    husky: "npm:^9.1.6"
-  languageName: unknown
-  linkType: soft
 
 "smart-buffer@npm:^4.2.0":
   version: 4.2.0

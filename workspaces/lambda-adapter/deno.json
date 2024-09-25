@@ -1,0 +1,9 @@
+{
+  "name": "@vicary/lambda-adapter",
+  "description": "A thin shim for Lambda Layer aws-lambda-adapter",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./mod.ts",
+  "nodeModulesDir": false,
+  "lock": false
+}
